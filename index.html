@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#181e1d">
+<meta name="description" content="Taner Yılmaz’ın lityum batarya paketi üretimi, punta kaynak ve BMS bağlantısı portföyü.">
+<title>Taner Yılmaz | Batarya Üretim Portföyü</title>
+<style>
+:root{color-scheme:light;--page:#f5f4ee;--paper:#fffefa;--ink:#181e1d;--muted:#4f5854;--line:#d8dcd0;--accent:#dafa68;--green:#3d541d;--mono:"IBM Plex Mono","Courier New",monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font-family:Inter,"Segoe UI",system-ui,sans-serif;line-height:1.55}
+body:has(dialog[open]){overflow:hidden}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid #53751d;outline-offset:4px}
+[hidden]{display:none!important}
+.wrap{width:min(1180px,calc(100% - 88px));margin-inline:auto}
+.top{background:var(--page);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:20px}
+.wordmark{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:760;letter-spacing:-.02em}
+.symbol{width:23px;height:13px;border:1.5px solid currentColor;border-radius:2px;position:relative;display:inline-grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px}
+.symbol::after{content:"";position:absolute;right:-4px;top:3px;width:2px;height:4px;background:currentColor;border-radius:0 1px 1px 0}
+.symbol i{background:#5e792d}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{text-decoration:none;font-size:.91rem;font-weight:640}
+.nav a:hover,.footer a:hover{text-decoration:underline;text-underline-offset:4px}
+.hero{background:var(--ink);color:var(--page)}
+.hero .wrap{display:grid;grid-template-columns:1fr .96fr;gap:clamp(30px,6vw,90px);align-items:center;padding-block:52px 54px}
+.kicker,.category,.metric-label{font-family:var(--mono);font-size:.73rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.kicker{color:var(--accent);margin:0 0 16px}
+h1,h2,h3,p,figure{margin:0}
+h1{font-size:clamp(3rem,6.8vw,6.3rem);letter-spacing:-.079em;line-height:.99;font-weight:800}
+.hero-copy>p:not(.kicker){color:#d4d9d0;font-size:clamp(1rem,1.5vw,1.15rem);max-width:460px;margin:24px 0}
+.cta{display:inline-flex;align-items:center;gap:25px;background:var(--accent);color:var(--ink);border-radius:4px;padding:11px 16px;text-decoration:none;font-weight:750}
+.cta:hover{background:#efffa7}
+.cta:focus-visible,.viewer button:focus-visible{outline-color:var(--accent)}
+.hero figure{position:relative;overflow:hidden;border-radius:6px;background:#26302b;border:1px solid #47534b}
+.hero figure img{display:block;width:100%;height:clamp(310px,35vw,460px);object-fit:cover;object-position:50% 74%}
+.hero figcaption{position:absolute;bottom:0;left:0;right:0;padding:38px 16px 11px;color:white;background:linear-gradient(transparent,#111815e8);font-size:.83rem}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.metric{padding:23px 22px 24px 0}
+.metric+.metric{padding-left:28px;border-left:1px solid var(--line)}
+.metric strong{display:block;font-size:clamp(1.05rem,2.4vw,1.7rem);letter-spacing:-.045em;line-height:1.22;margin-bottom:5px}
+.metric-label{color:var(--muted);font-size:.67rem;letter-spacing:.045em}
+.section{padding-top:62px}
+.section h2{font-size:clamp(2rem,4vw,3.6rem);line-height:1.03;letter-spacing:-.066em}
+.gallery-intro{display:flex;align-items:end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.filters{display:flex;flex-wrap:wrap;gap:7px}
+.filter{font-size:.81rem;border:1px solid #b8c1b1;background:transparent;color:var(--ink);padding:7px 11px;border-radius:4px;font-weight:620}
+.filter:hover{background:#e9eddf}
+.filter[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:white}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.photo{display:block;position:relative;background:#252d28;overflow:hidden}
+.photo:focus-visible{outline-offset:-4px;outline-color:var(--accent)}
+.photo img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .22s ease}
+.photo:hover img{transform:scale(1.035)}
+.zoom{position:absolute;right:11px;bottom:11px;display:grid;place-items:center;width:34px;height:34px;background:var(--paper);color:var(--ink);border-radius:4px;font-size:1.2rem}
+.card-body{padding:13px 15px 16px}
+.category{color:var(--green);font-size:.65rem;margin-bottom:4px}
+.card h3{font-size:1.08rem;line-height:1.32;letter-spacing:-.024em}
+.experience{display:grid;grid-template-columns:1.03fr 1fr;gap:34px;padding-bottom:64px}
+.experience h2{margin-bottom:16px}
+.experience p{color:var(--muted);max-width:52ch}
+.skills{display:flex;flex-wrap:wrap;gap:7px;padding:0;list-style:none;margin:18px 0 0}
+.skills li{font-size:.84rem;border:1px solid var(--line);padding:5px 9px;border-radius:4px;background:var(--paper)}
+.example{background:#e8eddf;border:1px solid #d0d9c2;border-radius:6px;padding:24px 26px;align-self:start}
+.example h3{font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.065em;margin:5px 0;line-height:1.1}
+.footer{border-top:1px solid var(--line);padding-block:19px;font-size:.88rem}
+.footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.footer a{font-weight:650;text-decoration:none}
+.viewer{padding:0;width:min(940px,calc(100% - 24px));max-height:calc(100dvh - 24px);border:1px solid #56615b;border-radius:8px;background:var(--ink);color:white}
+.viewer::backdrop{background:#101612d9}
+.viewer-head,.viewer-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px}
+.viewer-head h2{font-size:1rem}
+.viewer img{display:block;width:100%;height:clamp(100px,calc(100dvh - 160px),72dvh);object-fit:contain;background:#101412}
+.viewer button{min-width:42px;min-height:42px;border:1px solid #89948e;background:transparent;color:white;border-radius:4px}
+.viewer button:hover{background:#313d35}
+.counter{font-size:.87rem;font-family:var(--mono)}
+.skip{position:fixed;top:10px;left:10px;transform:translateY(-200%);z-index:5;background:var(--accent);padding:9px}
+.skip:focus{transform:none}
+@media(max-width:850px){.wrap{width:calc(100% - 44px)}.hero .wrap{gap:28px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){
+  .wrap{width:calc(100% - 32px)}.top .wrap{min-height:58px;gap:12px}.nav{gap:12px}.nav a{font-size:.81rem}.wordmark{font-size:.92rem;gap:8px}
+  .hero .wrap,.experience{grid-template-columns:1fr}.hero .wrap{padding-block:32px;gap:26px}.hero figure img{height:clamp(245px,72vw,370px)}
+  .metric{padding:16px 6px 16px 0}.metric+.metric{padding-left:9px}.metric-label{font-size:.61rem;letter-spacing:0}
+  .section{padding-top:42px}.gallery-intro{gap:14px;margin-bottom:16px}.gallery{gap:10px}.card-body{padding:10px}.card h3{font-size:.93rem}.category{font-size:.59rem;letter-spacing:.025em}
+  .zoom{width:29px;height:29px;right:6px;bottom:6px;font-size:1rem}.experience{gap:20px;padding-bottom:40px}.example{padding:19px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo img{transition:none}}
+</style>
+</head>
+<body id="baslangic">
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<header class="top"><div class="wrap">
+  <a href="#baslangic" class="wordmark"><span class="symbol" aria-hidden="true"><i></i><i></i><i></i></span>Taner Yılmaz</a>
+  <nav class="nav" aria-label="Sayfa menüsü"><a href="#calismalar">Çalışmalar</a><a href="#deneyim">Deneyim</a></nav>
+</div></header>
+<main id="icerik">
+  <section class="hero" aria-labelledby="baslik"><div class="wrap">
+    <div class="hero-copy">
+      <p class="kicker">Taner Yılmaz · Batarya Teknisyeni</p>
+      <h1 id="baslik">Batarya üretim portföyü</h1>
+      <p>Yaklaşık 3 yıldır lityum iyon ve lityum demir fosfat (LiFePO₄) batarya paketleri üretiyorum. Hücre gruplamadan paket montajına ve BMS bağlantısına kadar üretimin farklı aşamalarında çalışıyorum.</p>
+      <a class="cta" href="#calismalar">Çalışmaları incele <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure><img src="./assets/tbbq0978.webp" alt="Tezgâhta prizmatik hücreli batarya paketi ve mavi Daly BMS" fetchpriority="high"><figcaption>Prizmatik hücreli bir pakette BMS ve balans kabloları</figcaption></figure>
+  </div></section>
+  <div class="wrap">
+    <div class="metrics" aria-label="Deneyim özeti">
+      <div class="metric"><strong>Yaklaşık 3 yıl</strong><span class="metric-label">Üretim deneyimi</span></div>
+      <div class="metric"><strong>12–72 V</strong><span class="metric-label">Çalıştığım voltaj aralığı</span></div>
+      <div class="metric"><strong>Li-ion / LiFePO₄</strong><span class="metric-label">Batarya kimyaları</span></div>
+    </div>
+    <section class="section" id="calismalar" aria-labelledby="galeri-baslik">
+      <div class="gallery-intro">
+        <h2 id="galeri-baslik">Üretimden kareler</h2>
+        <div class="filters" aria-label="Fotoğraf filtresi" hidden>
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">Tümü</button>
+          <button class="filter" type="button" data-filter="bms" aria-pressed="false">BMS</button>
+          <button class="filter" type="button" data-filter="punta" aria-pressed="false">Punta kaynak</button>
+        </div>
+      </div>
+      <div class="gallery">
+        <article class="card" data-category="punta">
+      <a class="photo" href="./assets/img_2343.webp" data-index="0" aria-label="Punta kaynak bağlantıları fotoğrafını büyüt">
+        <img src="./assets/img_2343.webp" alt="Turuncu silindirik hücrelerin üzerinde punta kaynakla sabitlenen bağlantı şeritleri." style="object-position:50% 65%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">Hücre gruplama ve punta</p>
+        <h3>Punta kaynak bağlantıları</h3>
+      </div>
+    </article>
+<article class="card" data-category="bms">
+      <a class="photo" href="./assets/img_2089.webp" data-index="1" aria-label="JK BMS bağlantısı fotoğrafını büyüt">
+        <img src="./assets/img_2089.webp" alt="Batarya paketinde JK BMS, balans kabloları ve izolasyon katmanı." style="object-position:50% 77%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">BMS ve kablolama</p>
+        <h3>JK BMS bağlantısı</h3>
+      </div>
+    </article>
+<article class="card" data-category="punta">
+      <a class="photo" href="./assets/img_0107.webp" data-index="2" aria-label="18650 hücre paketi fotoğrafını büyüt">
+        <img src="./assets/img_0107.webp" alt="18650 hücrelerin üzerindeki izolasyon halkaları ve punta kaynak noktaları." style="object-position:50% 66%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">Hücre gruplama ve punta</p>
+        <h3>18650 hücre paketi</h3>
+      </div>
+    </article>
+<article class="card" data-category="bms">
+      <a class="photo" href="./assets/gifg0760.webp" data-index="3" aria-label="Prizmatik hücre montajı fotoğrafını büyüt">
+        <img src="./assets/gifg0760.webp" alt="Tezgâhta prizmatik hücre dizilimi, bara bağlantıları ve Daly BMS." style="object-position:50% 72%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">BMS ve kablolama</p>
+        <h3>Prizmatik hücre montajı</h3>
+      </div>
+    </article>
+<article class="card" data-category="punta">
+      <a class="photo" href="./assets/img_2520.webp" data-index="4" aria-label="Silindirik hücre grupları fotoğrafını büyüt">
+        <img src="./assets/img_2520.webp" alt="Mavi silindirik hücrelerle oluşturulan gruplar ve bağlantı şeritleri." style="object-position:50% 63%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">Hücre gruplama ve punta</p>
+        <h3>Silindirik hücre grupları</h3>
+      </div>
+    </article>
+<article class="card" data-category="bms">
+      <a class="photo" href="./assets/tbbq0978.webp" data-index="5" aria-label="Daly BMS ve bara bağlantıları fotoğrafını büyüt">
+        <img src="./assets/tbbq0978.webp" alt="Paketin ön yüzünde Daly BMS, üst yüzünde baralar ve balans kabloları." style="object-position:50% 86%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">BMS ve kablolama</p>
+        <h3>Daly BMS ve bara bağlantıları</h3>
+      </div>
+    </article>
+<article class="card" data-category="bms">
+      <a class="photo" href="./assets/img_2091.webp" data-index="6" aria-label="Balans kablolarının yerleşimi fotoğrafını büyüt">
+        <img src="./assets/img_2091.webp" alt="Kırmızı balans kablolarının izolasyon katmanı üzerindeki düzeni." style="object-position:50% 39%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">BMS ve kablolama</p>
+        <h3>Balans kablolarının yerleşimi</h3>
+      </div>
+    </article>
+<article class="card" data-category="punta">
+      <a class="photo" href="./assets/img_2342.webp" data-index="7" aria-label="Punta kaynak tezgâhında hücre grupları fotoğrafını büyüt">
+        <img src="./assets/img_2342.webp" alt="Turuncu silindirik hücre grupları ve punta kaynak ekipmanı." style="object-position:50% 52%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">Hücre gruplama ve punta</p>
+        <h3>Punta kaynak tezgâhında hücre grupları</h3>
+      </div>
+    </article>
+<article class="card" data-category="bms">
+      <a class="photo" href="./assets/olpr6739.webp" data-index="8" aria-label="Prizmatik hücrelerde kablolama fotoğrafını büyüt">
+        <img src="./assets/olpr6739.webp" alt="Prizmatik hücreler üzerindeki mavi balans kabloları ve bara bağlantıları." style="object-position:50% 74%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">BMS ve kablolama</p>
+        <h3>Prizmatik hücrelerde kablolama</h3>
+      </div>
+    </article>
+<article class="card" data-category="montaj">
+      <a class="photo" href="./assets/img_2531.webp" data-index="9" aria-label="Yatay paket yerleşimi fotoğrafını büyüt">
+        <img src="./assets/img_2531.webp" alt="Yatay yerleştirilen silindirik hücre grupları ve paketin kenarındaki izolasyon katmanı." style="object-position:50% 60%" loading="lazy" decoding="async">
+        <span class="zoom" aria-hidden="true">↗</span>
+      </a>
+      <div class="card-body">
+        <p class="category">Paket montajı</p>
+        <h3>Yatay paket yerleşimi</h3>
+      </div>
+    </article>
+      </div>
+    </section>
+    <section class="section experience" id="deneyim" aria-labelledby="deneyim-baslik">
+      <div>
+        <h2 id="deneyim-baslik">Üretimde yaptığım işler</h2>
+        <p>Elektrikli üç ve dört tekerlekli araçlar ile scooterlar için batarya paketleri hazırlıyorum. Matkap bataryası üretiminde de çalıştım. BMS ve balans kablosu bağlantılarını yapıyor, BMS parametrelerini uygulama üzerinden ayarlıyorum.</p>
+        <ul class="skills"><li>Hücre gruplama</li><li>Punta kaynak</li><li>Lehimleme</li><li>Kablolama</li><li>İzolasyon</li><li>Paket montajı</li></ul>
+      </div>
+      <article class="example">
+        <p class="category">Proje örneği</p>
+        <h3>24 V / 310 Ah</h3>
+        <p>Binicili zemin temizleme makinesi için hazırladığım batarya paketi.</p>
+      </article>
+    </section>
+  </div>
+</main>
+<footer class="footer"><div class="wrap"><span>Taner Yılmaz · Batarya Teknisyeni</span><a href="#baslangic">Yukarı dön ↑</a></div></footer>
+<dialog class="viewer" aria-labelledby="photo-title">
+  <div class="viewer-head"><h2 id="photo-title"></h2><button type="button" class="close" aria-label="Kapat" autofocus>✕</button></div>
+  <img class="viewer-img" alt="">
+  <div class="viewer-foot">
+    <button type="button" class="prev" aria-label="Önceki fotoğraf">←</button>
+    <span class="counter" aria-live="polite"></span>
+    <button type="button" class="next" aria-label="Sonraki fotoğraf">→</button>
+  </div>
+</dialog>
+<script>
+const filters = document.querySelector('.filters');
+const cards = [...document.querySelectorAll('.card')];
+const viewer = document.querySelector('.viewer');
+const fullImage = viewer.querySelector('.viewer-img');
+const heading = viewer.querySelector('#photo-title');
+const counter = viewer.querySelector('.counter');
+const previous = viewer.querySelector('.prev');
+const next = viewer.querySelector('.next');
+let visibleCards = cards;
+let currentIndex = 0;
+let opener;
+
+filters.hidden = false;
+filters.addEventListener('click', (event) => {
+  const filter = event.target.closest('button[data-filter]');
+  if (!filter) return;
+  filters.querySelectorAll('button').forEach((button) => {
+    button.setAttribute('aria-pressed', String(button === filter));
+  });
+  cards.forEach((card) => {
+    card.hidden = filter.dataset.filter !== 'all' && card.dataset.category !== filter.dataset.filter;
+  });
+  visibleCards = cards.filter((card) => !card.hidden);
+});
+
+function showPhoto(index) {
+  currentIndex = (index + visibleCards.length) % visibleCards.length;
+  const card = visibleCards[currentIndex];
+  const thumbnail = card.querySelector('img');
+  fullImage.src = thumbnail.src;
+  fullImage.alt = thumbnail.alt;
+  heading.textContent = card.querySelector('h3').textContent;
+  counter.textContent = `${currentIndex + 1} / ${visibleCards.length}`;
+  previous.disabled = visibleCards.length === 1;
+  next.disabled = previous.disabled;
+}
+
+document.querySelector('.gallery').addEventListener('click', (event) => {
+  const photo = event.target.closest('.photo');
+  if (!photo || !viewer.showModal || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  opener = photo;
+  showPhoto(visibleCards.indexOf(photo.closest('.card')));
+  viewer.showModal();
+});
+viewer.querySelector('.close').addEventListener('click', () => viewer.close());
+viewer.addEventListener('close', () => opener?.focus());
+previous.addEventListener('click', () => showPhoto(currentIndex - 1));
+next.addEventListener('click', () => showPhoto(currentIndex + 1));
+viewer.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    event.preventDefault();
+    showPhoto(currentIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+  }
+});
+</script>
+</body>
+</html>
